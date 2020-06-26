@@ -15,12 +15,18 @@
 {“Информатика”: 170, “Физика”: 40, “Физкультура”: 30}
 """
 
-pp = []
-plan = {}
-with open('task_6_doc.txt', 'r', encoding='UTF-8') as text:
+import re
+my_dict = dict()
 
-    for line in text:
-        subject, lecture, practice, lab = line.split()
-        plan[subject] = int(lecture) + int(practice) + int(lab)
-    print(f'Общее количество часов по предмету: \n {plan}')
+with open("task_6_doc.txt", "r", encoding='UTF-8') as text:
+    lines = text.readlines()
+    for el in lines:
+        new_line = el.split()
+        subject = new_line[0]
 
+        regex_num = re.compile('\d+')
+        a = regex_num.findall(el)
+        sum_lesson = sum([int(num) for num in a])
+        my_dict[subject] = sum_lesson
+
+print(my_dict)
