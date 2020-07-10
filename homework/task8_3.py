@@ -13,7 +13,7 @@ class Error:
 
         while True:
             try:
-                val = int(input("Введите значения и нажимайте Enter:\n"))
+                val = int(input("Введите значение и нажимайте Enter:\n"))
                 self.my_list.append(val)
                 print(f"Текущий список - {self.my_list} \n ")
             except:
@@ -22,9 +22,12 @@ class Error:
 
                 if y_or_n == 'Y' or y_or_n == 'y':
                     print(try_except.my_input())
+
                 elif y_or_n == 'N' or y_or_n == 'n':
-                    return f'Вы вышли'
+                    print(f"Вы вышли\n{self.my_list}")
+                    break
                 else:
-                    return f'Проверка завершена'
-try_except = Error(1)
+                    print(f"Неверный символ")
+
+try_except = Error()
 try_except.my_input()
